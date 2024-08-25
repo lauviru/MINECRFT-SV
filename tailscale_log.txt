@@ -108,3 +108,5 @@ Perhaps ip6tables or your kernel needs to be upgraded.
 2024/08/25 17:15:12 derphttp.Client.Connect: connecting to derp-16 (mia)
 2024/08/25 17:15:12 magicsock: derp-16 connected; connGen=1
 2024/08/25 17:15:12 health("overall"): ok
+2024/08/25 17:32:35 Received error: PollNetMap: unexpected EOF
+2024/08/25 17:32:36 control: netmap: got new dial plan from control
