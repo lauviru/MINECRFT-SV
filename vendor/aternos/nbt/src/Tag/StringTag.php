@@ -13,32 +13,6 @@ class StringTag extends Tag
     protected string $value = "";
 
     /**
-     * @param string $source
-     * @return string
-     */
-    public static function encodeSNBTString(string $source): string
-    {
-        $quoteChar = '"';
-        if (str_contains($source, '"') && !str_contains($source, "'")) {
-            $quoteChar = "'";
-        }
-
-        $result = "";
-        for ($i = 0; $i < strlen($source); $i++) {
-            $char = $source[$i];
-            if ($char === "\\") {
-                $result .= "\\\\";
-            } else if ($char === $quoteChar) {
-                $result .= "\\" . $quoteChar;
-            } else {
-                $result .= $char;
-            }
-        }
-
-        return $quoteChar . $result . $quoteChar;
-    }
-
-    /**
      * @return string
      */
     public function getValue(): string
@@ -107,7 +81,7 @@ class StringTag extends Tag
     /**
      * @inheritDoc
      */
-    public function jsonSerialize(): string
+    public function jsonSerialize()
     {
         return $this->value;
     }
@@ -119,13 +93,5 @@ class StringTag extends Tag
     {
         return $tag instanceof StringTag && $this->getType() === $tag->getType() &&
             $tag->getValue() === $this->getValue();
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function toSNBT(): string
-    {
-        return static::encodeSNBTString($this->value);
     }
 }

@@ -34,12 +34,4 @@ class ShortTag extends IntValueTag
     {
         return $reader->getDeserializer()->readShort()->getRawData();
     }
-
-    /**
-     * @inheritDoc
-     */
-    public function toSNBT(): string
-    {
-        return $this->value . "s";
-    }
 }

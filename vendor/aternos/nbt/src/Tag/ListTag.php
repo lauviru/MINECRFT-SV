@@ -192,7 +192,7 @@ class ListTag extends ArrayValueTag
     /**
      * @inheritDoc
      */
-    public function offsetSet($offset, $value): void
+    public function offsetSet($offset, $value)
     {
         if ($this->isRaw()) {
             throw new Exception("Raw list tags cannot be modified");
@@ -209,7 +209,7 @@ class ListTag extends ArrayValueTag
      * @inheritDoc
      * @throws Exception
      */
-    public function offsetUnset($offset): void
+    public function offsetUnset($offset)
     {
         if ($this->isRaw()) {
             throw new Exception("Raw list tags cannot be modified");
@@ -254,17 +254,5 @@ class ListTag extends ArrayValueTag
             return strlen($this->rawContent) . " bytes";
         }
         return parent::getValueString();
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function toSNBT(): string
-    {
-        $values = [];
-        foreach ($this->valueArray as $value) {
-            $values[] = $value->toSNBT();
-        }
-        return "[" . implode(", ", $values) . "]";
     }
 }

@@ -52,7 +52,7 @@ class EndTag extends Tag
     /**
      * @inheritDoc
      */
-    public function jsonSerialize(): mixed
+    public function jsonSerialize()
     {
         return null;
     }
@@ -63,13 +63,5 @@ class EndTag extends Tag
     function equals(Tag $tag): bool
     {
         return $tag->getType() === $this->getType();
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function toSNBT(): string
-    {
-        return "";
     }
 }

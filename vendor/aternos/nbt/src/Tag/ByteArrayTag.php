@@ -68,23 +68,11 @@ class ByteArrayTag extends ArrayValueTag
     protected function getValueString(): string
     {
         $values = array_map(function ($elem) {
-            return str_pad(dechex($elem), 2, "0");
+            return str_pad(dechex($elem), 2, "0", STR_PAD_RIGHT);
         }, array_slice($this->valueArray, 0, 32));
         if (count($this->valueArray) > 32) {
             $values[] = "...";
         }
         return $this->count() . " byte" . ($this->count() === 1 ? "" : "s") . " [" . implode(" ", $values) . "]";
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function toSNBT(): string
-    {
-        $values = [];
-        foreach ($this->valueArray as $val) {
-            $values[] = $val . "b";
-        }
-        return "[B;" . implode(", ", $values) . "]";
     }
 }

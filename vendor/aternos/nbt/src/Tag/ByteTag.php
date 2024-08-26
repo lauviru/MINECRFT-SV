@@ -34,12 +34,4 @@ class ByteTag extends IntValueTag
     {
         return $reader->getDeserializer()->readByte()->getRawData();
     }
-
-    /**
-     * @inheritDoc
-     */
-    public function toSNBT(): string
-    {
-        return $this->value . "b";
-    }
 }

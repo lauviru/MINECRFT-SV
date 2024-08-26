@@ -233,12 +233,11 @@ abstract class Tag implements JsonSerializable
 
     /**
      * @param string $str
-     * @param int $width
      * @return string
      */
-    protected function indent(string $str, int $width = 2): string
+    protected function indent(string $str): string
     {
-        return str_repeat(" ", $width) . str_replace("\n", "\n  ", $str);
+        return "  " . str_replace("\n", "\n  ", $str);
     }
 
     /**
@@ -256,14 +255,6 @@ abstract class Tag implements JsonSerializable
     {
         return $this->getTagTypeString() . "('" . ($this->getName() ?: "None") . "'): " . $this->getValueString();
     }
-
-    /**
-     * Convert tag to SNBT
-     * See https://minecraft.wiki/w/NBT_format#Conversion_to_SNBT
-     *
-     * @return string
-     */
-    abstract public function toSNBT(): string;
 
     /**
      * @param Tag $tag

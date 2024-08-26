@@ -51,12 +51,4 @@ class FloatTag extends FloatValueTag
         $this->resetRawValue();
         return parent::setValue($value);
     }
-
-    /**
-     * @inheritDoc
-     */
-    public function toSNBT(): string
-    {
-        return $this->value . "f";
-    }
 }
